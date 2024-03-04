@@ -21,6 +21,7 @@ app.use(express.json());
 
 // Use Routers
 app.use('/fav', favoriteRouter);
+app.use('/states', require('./routes/states'));
 
 // Routes
 app.get('/seed', async (req, res) => {
