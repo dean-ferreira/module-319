@@ -4,9 +4,13 @@ const mongoose = require('mongoose');
 
 // Schemas
 const State = require('./models/State');
+const User = require('./models/user');
+const Favorite = require('./models/favorite');
 
 // Seeds
 const allStates = require('./data/states');
+const allUsers = require('./data/users');
+const allFavorites = require('./data/favorites');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -34,6 +38,13 @@ app.use('/users', usersRouter);
 app.get('/seed', async (req, res) => {
     await State.deleteMany({});
     await State.create(allStates);
+
+    await User.deleteMany({});
+    await User.create(allUsers);
+
+    await Favorite.deleteMany({});
+    await Favorite.create(allFavorites);
+
     res.json({ message: 'Database seeded' });
 });
 
