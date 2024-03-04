@@ -1,7 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
+
+// Schemas
 const State = require('./models/State');
+
+// Seeds
 const allStates = require('./data/states');
 
 const app = express();
@@ -15,13 +19,14 @@ db.once('open', () => console.log('Connected to database'));
 
 // Routers
 const favoriteRouter = require('./routes/favorites');
+const statesRouter = require('./routes/states');
 
 // Middleware
 app.use(express.json());
 
 // Use Routers
 app.use('/fav', favoriteRouter);
-app.use('/states', require('./routes/states'));
+app.use('/states', statesRouter);
 
 // Routes
 app.get('/seed', async (req, res) => {
