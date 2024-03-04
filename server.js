@@ -20,6 +20,7 @@ db.once('open', () => console.log('Connected to database'));
 // Routers
 const favoriteRouter = require('./routes/favorites');
 const statesRouter = require('./routes/states');
+const usersRouter = require('./routes/users');
 
 // Middleware
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use(express.json());
 // Use Routers
 app.use('/fav', favoriteRouter);
 app.use('/states', statesRouter);
+app.use('/users', usersRouter);
 
 // Routes
 app.get('/seed', async (req, res) => {
