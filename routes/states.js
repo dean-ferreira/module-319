@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const State = require('../models/State');
+const State = require('../models/state');
 
 async function getStateByName(req, res, next) {
     let state;

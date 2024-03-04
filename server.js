@@ -3,7 +3,7 @@ const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 
 // Schemas
-const State = require('./models/State');
+const State = require('./models/state');
 const User = require('./models/user');
 const Favorite = require('./models/favorite');
 
