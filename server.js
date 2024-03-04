@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
+const State = require('./models/State');
+const allStates = require('./data/states');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +21,13 @@ app.use(express.json());
 
 // Use Routers
 app.use('/fav', favoriteRouter);
+
+// Routes
+app.get('/seed', async (req, res) => {
+    await State.deleteMany({});
+    await State.create(allStates);
+    res.json({ message: 'Database seeded' });
+});
 
 // Start server
 app.listen(PORT, () => {
